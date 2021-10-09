@@ -1,0 +1,54 @@
+question==>https://codeforces.com/contest/1594/problem/E1
+
+#include<bits/stdc++.h>
+#define int long long 
+using namespace std;
+int mod = 1e9+7;
+
+int  power(int base, int n)
+{
+	int ans = 1;
+	while(n)
+	{
+		if(n%2==0)
+		{
+			base = (base*base);
+			n /=2;
+		}
+		else
+		{
+			ans = (ans*base);
+			n -= 1;
+		}
+	}
+	return ans;
+}
+
+int  powe(int base, int n)
+{
+	int ans = 1;
+	while(n)
+	{
+		if(n%2==0)
+		{
+			base = (base*base) % mod;
+			n /=2;
+		}
+		else
+		{
+			ans = (ans*base) % mod;
+			n -= 1;
+		}
+	}
+	return ans%mod;
+}
+signed main(){
+    int n;
+    cin>>n;
+    int no = power(2,n);
+    no = no-2;
+    int ans = 6;
+    ans = (ans*powe(4,no))%mod;
+    cout<<ans<<"\n";
+    return 0;
+}
